@@ -4,6 +4,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/functions");
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy("src/_redirects");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
   return {

@@ -1,0 +1,17 @@
+{
+  "url": "https://marcusresults.com",
+  "name": "Marcus Results",
+  "description": "Targeted paid ads for Aussie home services businesses. Landscapers, house washers, concreters and other outdoor trades.",
+  "phone_office": "+61731139989",
+  "phone_mobile": "+61457765928",
+  "email": "marcus@marcusresults.com",
+  "address": {
+    "suburb": "Bardon",
+    "city": "Brisbane",
+    "state": "QLD",
+    "country": "AU"
+  },
+  "founded": "2021",
+  "lat": -27.4595,
+  "lng": 152.9714
+}

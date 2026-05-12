@@ -8,6 +8,8 @@
   <meta property="og:title" content="{{ ogTitle if ogTitle else title }}" />
   {% if description %}<meta property="og:description" content="{{ ogDescription if ogDescription else description }}" />{% endif %}
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <!-- Favicon: add your favicon files to src/ and uncomment:
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
