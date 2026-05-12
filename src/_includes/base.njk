@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+  {% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+  <meta property="og:title" content="{{ ogTitle if ogTitle else title }}" />
+  {% if description %}<meta property="og:description" content="{{ ogDescription if ogDescription else description }}" />{% endif %}
+  <meta property="og:type" content="website" />
+  <!-- Favicon: add your favicon files to src/ and uncomment:
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  -->
+  <link rel="stylesheet" href="/css/main.css" />
+  {% if turnstile %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="logo" href="/">
+      <span class="dot"></span>MARCUS<span class="slash">/</span>RESULTS
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+        <li><a href="/services" {% if "/services" in page.url %}class="active"{% endif %}>Services</a></li>
+        <li><a href="/case-studies" {% if "/case-studies" in page.url or "/case-study" in page.url %}class="active"{% endif %}>Case Studies</a></li>
+        <li><a href="/pricing" {% if "/pricing" in page.url %}class="active"{% endif %}>Pricing</a></li>
+        <li><a href="/about" {% if "/about" in page.url %}class="active"{% endif %}>About</a></li>
+        <li><a href="/blog" {% if "/blog" in page.url %}class="active"{% endif %}>Insights</a></li>
+        <li><a href="/contact" {% if "/contact" in page.url %}class="active"{% endif %}>Contact</a></li>
+      </ul>
+    </nav>
+    <a href="/contact" class="btn dark sm header-cta">Free Audit →</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+{{ content | safe }}
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="brand">
+      <div class="display">MARCUS<span style="color:var(--orange)">/</span>RESULTS</div>
+      <p>Marketing for home services businesses that actually want to grow. Brisbane, QLD.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Insights</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Industries</h4>
+      <ul>
+        <li>Landscaping</li>
+        <li>House Washing</li>
+        <li>Concreting</li>
+        <li>Roofing</li>
+        <li>Tree Services</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@marcusresults.com.au">hello@marcusresults.com.au</a></li>
+        <li><a href="tel:0400000000">0400 000 000</a></li>
+        <li>Brisbane, QLD</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <span>© 2026 MARCUS RESULTS PTY LTD</span>
+    <span>BRISBANE → AUSTRALIA WIDE</span>
+  </div>
+</footer>
+
+<!-- ============ STICKY CTA ============ -->
+<div class="sticky-cta">
+  <div class="label">
+    <span class="display">FREE 30-MIN AUDIT</span>
+    <span class="mono">No pitch unless you want one.</span>
+  </div>
+  <a href="/contact" class="btn sm">Book Now →</a>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

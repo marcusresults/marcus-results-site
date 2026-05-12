@@ -1,0 +1,109 @@
+---
+layout: base.njk
+title: Contact — Free Audit — Marcus Results
+description: Book your free 30-minute marketing audit. We'll tell you what's working, what's wasted, and what we'd do differently.
+turnstile: true
+---
+
+<section class="hero">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;" class="contact-grid">
+      <div>
+        <span class="mono" style="font-size:12px;letter-spacing:0.18em;">CONTACT / FREE AUDIT</span>
+        <h1 class="reveal" style="font-family:'Archivo Black',sans-serif;line-height:0.85;letter-spacing:-0.025em;text-transform:uppercase;margin-top:16px;font-size:clamp(56px,12vw,144px);">
+          Book<br />the<br /><span style="color:var(--orange)">audit.</span>
+        </h1>
+        <p style="font-size:18px;max-width:540px;margin-top:24px;line-height:1.5;">
+          30-min teardown of your current marketing. We'll tell you what's working, what's wasted, and what we'd do if it were our money on the line. No pitch unless you want one.
+        </p>
+
+        <div style="margin-top:48px;border-top:2px solid var(--ink);">
+          <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;padding:24px 0;border-bottom:1.5px solid var(--ink);align-items:center;">
+            <span class="mono" style="font-size:11px;color:var(--orange);">PHONE</span>
+            <a href="tel:0400000000" class="display" style="font-size:24px;">0400 000 000</a>
+            <span class="mono" style="font-size:11px;color:var(--muted);">7am–6pm AEST · Mon–Sat</span>
+          </div>
+          <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;padding:24px 0;border-bottom:1.5px solid var(--ink);align-items:center;">
+            <span class="mono" style="font-size:11px;color:var(--orange);">EMAIL</span>
+            <a href="mailto:hello@marcusresults.com.au" class="display" style="font-size:20px;">hello@marcusresults.com.au</a>
+            <span class="mono" style="font-size:11px;color:var(--muted);">Reply within hours</span>
+          </div>
+          <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;padding:24px 0;border-bottom:1.5px solid var(--ink);align-items:center;">
+            <span class="mono" style="font-size:11px;color:var(--orange);">OFFICE</span>
+            <span class="display" style="font-size:24px;">Fortitude Valley</span>
+            <span class="mono" style="font-size:11px;color:var(--muted);">Brisbane, QLD 4006</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-wrap reveal reveal-delay-1">
+        <span class="tape">FREE / NO LOCK-IN</span>
+        <h2>Quick form.</h2>
+        <p class="sub">WE'LL CALL YOU WITHIN 24HRS.</p>
+
+        <form data-validate action="/api/submit" method="POST" data-redirect="/thanks" novalidate>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true" />
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="Dave Smith" required />
+            <div class="err">Tell us your name.</div>
+          </div>
+          <div class="field">
+            <label for="biz">Business Name</label>
+            <input id="biz" name="biz" type="text" placeholder="Smith's Lawns" required />
+            <div class="err">What's your business called?</div>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="0400 000 000" required />
+            <div class="err">We'll need a number to call you.</div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="dave@smithslawns.com.au" required />
+            <div class="err">Real email please.</div>
+          </div>
+
+          <div class="field">
+            <label>Industry</label>
+            <div class="chip-row" data-chip-group>
+              <input type="hidden" name="industry" />
+              <button type="button" class="chip active" data-value="landscaping">LANDSCAPING</button>
+              <button type="button" class="chip" data-value="house-wash">HOUSE WASH</button>
+              <button type="button" class="chip" data-value="concreting">CONCRETING</button>
+              <button type="button" class="chip" data-value="roofing">ROOFING</button>
+              <button type="button" class="chip" data-value="tree">TREE</button>
+              <button type="button" class="chip" data-value="other">OTHER</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Monthly Marketing Budget</label>
+            <div class="chip-row" data-chip-group>
+              <input type="hidden" name="budget" />
+              <button type="button" class="chip" data-value="<2k">&lt;$2K</button>
+              <button type="button" class="chip active" data-value="2-5k">$2–5K</button>
+              <button type="button" class="chip" data-value="5-10k">$5–10K</button>
+              <button type="button" class="chip" data-value="10k+">$10K+</button>
+            </div>
+          </div>
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAA_REPLACE_WITH_YOUR_SITE_KEY" data-theme="dark" data-size="flexible" style="margin-bottom:16px;"></div>
+          <div class="form-error mono" style="display:none;font-size:11px;color:#ff8080;margin-bottom:12px;"></div>
+
+          <button type="submit" class="btn lg" style="width:100%;justify-content:center;">Send It →</button>
+          <p class="mono" style="font-size:10px;opacity:0.6;margin-top:16px;text-align:center;">We won't spam. Won't sell your details.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="caution"></div>
+
+<section class="section" style="text-align:center;">
+  <div class="container">
+    <h2 class="display fs-xl">Or just call.<br /><span style="color:var(--orange)">0400 000 000.</span></h2>
+    <p style="font-size:16px;color:var(--muted);margin-top:16px;">That's Marcus's actual phone. He picks up.</p>
+  </div>
+</section>
