@@ -139,7 +139,7 @@
         if (btn) { btn.textContent = originalText; btn.disabled = false; }
         var errBox = form.querySelector('.form-error');
         if (errBox) {
-          errBox.textContent = 'Couldn\u2019t send \u2014 please call 0457 765 928 or email marcus@mrcusresults.com';
+          errBox.textContent = 'Couldn\u2019t send \u2014 please call 0457 765 928 or email marcus@marcusresults.com';
           errBox.style.display = 'block';
         }
         // reset turnstile if present
