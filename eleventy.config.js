@@ -12,6 +12,15 @@ export default function (eleventyConfig) {
   // Exposed to templates as {{ buildDate }} — used for sitemap <lastmod>
   eleventyConfig.addGlobalData("buildDate", () => new Date().toISOString().slice(0, 10));
 
+  // Build-time fallback for the "BOOKING <month>" pill (one month ahead of build).
+  // Client-side JS in main.js corrects this to the visitor's actual next month.
+  eleventyConfig.addGlobalData("bookingMonth", () => {
+    const now = new Date();
+    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+    return months[next.getMonth()] + " " + next.getFullYear();
+  });
+
   return {
     dir: {
       input: "src",

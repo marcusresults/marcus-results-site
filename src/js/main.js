@@ -158,4 +158,13 @@
     });
   });
 
+  // ---------- Booking month (one month ahead of the viewer's date) ----------
+  var bookingEl = document.getElementById('booking-month');
+  if (bookingEl) {
+    var bNow = new Date();
+    var bNext = new Date(bNow.getFullYear(), bNow.getMonth() + 1, 1);
+    var B_MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+    bookingEl.textContent = B_MONTHS[bNext.getMonth()] + ' ' + bNext.getFullYear();
+  }
+
 })();
