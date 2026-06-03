@@ -826,6 +826,7 @@ p { margin: 0; }
   padding: 24px 0;
   border-bottom: 1.5px solid var(--ink);
   align-items: center;
+  overflow-wrap: anywhere;
 }
 .contact-info-row:last-child { border-bottom: 0; }
 
@@ -843,4 +844,5 @@ p { margin: 0; }
   .principles-grid { grid-template-columns: 1fr; }
   .contact-info-row { grid-template-columns: 1fr; gap: 4px; }
   .contact-info-row .contact-info-desc { display: none; }
+  .form-wrap { padding: 28px 20px; }
 }
