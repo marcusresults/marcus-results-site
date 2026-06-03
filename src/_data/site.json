@@ -16,10 +16,10 @@
   "areaServed": ["Brisbane", "Gold Coast", "Sunshine Coast", "Ipswich", "Logan"],
   "ogImage": "/og-image.jpg",
   "social": [
-    "https://au.linkedin.com/company/marcusresults",
-    "https://www.instagram.com/marcusresults/",
-    "https://www.facebook.com/marcusresults",
-    "https://www.tiktok.com/@marcusresults",
-    "https://www.youtube.com/@marcusresults"
+    { "name": "LinkedIn", "url": "https://au.linkedin.com/company/marcusresults" },
+    { "name": "Instagram", "url": "https://www.instagram.com/marcusresults/" },
+    { "name": "Facebook", "url": "https://www.facebook.com/marcusresults" },
+    { "name": "TikTok", "url": "https://www.tiktok.com/@marcusresults" },
+    { "name": "YouTube", "url": "https://www.youtube.com/@marcusresults" }
   ]
 }

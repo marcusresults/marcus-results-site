@@ -71,7 +71,7 @@
         "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:00" },
         "areaServed": [{% for a in site.areaServed %}{ "@type": "City", "name": "{{ a }}" }{% if not loop.last %}, {% endif %}{% endfor %}],
         "knowsAbout": ["Google Ads for trades", "Meta advertising", "lead generation for home services", "landscaping marketing", "house washing marketing", "concreting marketing", "roofing marketing", "missed-call recovery", "local service ads"],
-        "sameAs": [{% for u in site.social %}"{{ u }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+        "sameAs": [{% for s in site.social %}"{{ s.url }}"{% if not loop.last %}, {% endif %}{% endfor %}],
         "contactPoint": { "@type": "ContactPoint", "telephone": "{{ site.phone_office }}", "email": "{{ site.email }}", "contactType": "sales", "areaServed": "AU", "availableLanguage": "English" }
       },
       {
@@ -140,13 +140,9 @@
       </ul>
     </div>
     <div>
-      <h4>Industries</h4>
+      <h4>Follow</h4>
       <ul>
-        <li>Landscaping</li>
-        <li>House Washing</li>
-        <li>Concreting</li>
-        <li>Roofing</li>
-        <li>Tree Services</li>
+        {% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a></li>{% endfor %}
       </ul>
     </div>
     <div>
