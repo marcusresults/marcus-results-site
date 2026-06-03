@@ -50,8 +50,7 @@ Brisbane, Gold Coast, Sunshine Coast, Ipswich and Logan, plus Australia wide.
 ## Pages
 
 - Home: https://marcusresults.com/
-- Services: https://marcusresults.com/services/
-- Case Studies: https://marcusresults.com/case-studies/
+- How It Works (services and results): https://marcusresults.com/services/
 - Pricing: https://marcusresults.com/pricing/
 - About: https://marcusresults.com/about/
 - Insights / Blog: https://marcusresults.com/blog/

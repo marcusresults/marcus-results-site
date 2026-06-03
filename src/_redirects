@@ -1,3 +1,9 @@
 # Legacy URL aliases
 /insights   /blog    301
 /index      /        301
+
+# Case studies merged into How It Works (/services)
+/case-studies   /services   301
+/case-studies/* /services   301
+/case-study     /services   301
+/case-study/*   /services   301

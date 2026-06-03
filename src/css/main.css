@@ -800,6 +800,21 @@ p { margin: 0; }
   gap: 48px;
 }
 
+/* Change -> result cards (How It Works) */
+.change-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.change-card { border: 2px solid var(--ink); background: var(--white); padding: 24px; display: flex; flex-direction: column; }
+.change-card .change-tag { font-size: 11px; color: var(--orange); letter-spacing: 0.14em; }
+.change-card h3 { font-family: 'Archivo Black', sans-serif; font-size: 20px; line-height: 1.05; text-transform: uppercase; letter-spacing: -0.01em; margin: 10px 0 12px; }
+.change-card > p { font-size: 14px; line-height: 1.5; color: var(--muted); }
+.change-card .ba { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 18px; border-top: 1.5px solid var(--ink); flex-wrap: wrap; }
+.change-card .ba > div { display: flex; flex-direction: column; }
+.change-card .ba-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
+.change-card .ba-num { font-family: 'Archivo Black', sans-serif; font-size: 26px; line-height: 1; letter-spacing: -0.02em; }
+.change-card .ba-num.win { color: var(--orange); }
+.change-card .ba-arrow { color: var(--orange); font-weight: 900; font-size: 18px; }
+.change-card .change-foot { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 14px; }
+@media (max-width: 900px) { .change-grid { grid-template-columns: 1fr; } }
+
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

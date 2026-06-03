@@ -104,8 +104,7 @@
     <nav class="main-nav" aria-label="Main">
       <ul>
         <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-        <li><a href="/services" {% if "/services" in page.url %}class="active"{% endif %}>Services</a></li>
-        <li><a href="/case-studies" {% if "/case-studies" in page.url or "/case-study" in page.url %}class="active"{% endif %}>Case Studies</a></li>
+        <li><a href="/services" {% if "/services" in page.url %}class="active"{% endif %}>How It Works</a></li>
         <li><a href="/pricing" {% if "/pricing" in page.url %}class="active"{% endif %}>Pricing</a></li>
         <li><a href="/about" {% if "/about" in page.url %}class="active"{% endif %}>About</a></li>
         <li><a href="/blog" {% if "/blog" in page.url %}class="active"{% endif %}>Insights</a></li>
@@ -132,8 +131,7 @@
       <h4>Site</h4>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/services">How It Works</a></li>
         <li><a href="/pricing">Pricing</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Insights</a></li>
