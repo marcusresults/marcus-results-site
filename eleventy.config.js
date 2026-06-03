@@ -6,7 +6,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/_redirects");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/llms.txt");
-  eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/favicon.svg");
+
+  // Exposed to templates as {{ buildDate }} — used for sitemap <lastmod>
+  eleventyConfig.addGlobalData("buildDate", () => new Date().toISOString().slice(0, 10));
 
   return {
     dir: {

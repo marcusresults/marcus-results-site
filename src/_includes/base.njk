@@ -1,22 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>{{ title }}</title>
   {% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+  {% if noindex %}<meta name="robots" content="noindex, nofollow" />{% else %}<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />{% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  <meta name="author" content="{{ site.name }}" />
+
+  <!-- Local / geo signals -->
+  <meta name="geo.region" content="AU-QLD" />
+  <meta name="geo.placename" content="Brisbane, Queensland" />
+  <meta name="ICBM" content="{{ site.lat }}, {{ site.lng }}" />
+  <meta name="theme-color" content="#FF5B1F" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:title" content="{{ ogTitle if ogTitle else title }}" />
   {% if description %}<meta property="og:description" content="{{ ogDescription if ogDescription else description }}" />{% endif %}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{{ ogType if ogType else 'website' }}" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-  <!-- Favicon: add your favicon files to src/ and uncomment:
-  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta property="og:locale" content="en_AU" />
+  {% if site.ogImage %}<meta property="og:image" content="{{ site.url }}{{ site.ogImage }}" />{% endif %}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="{% if site.ogImage %}summary_large_image{% else %}summary{% endif %}" />
+  <meta name="twitter:title" content="{{ ogTitle if ogTitle else title }}" />
+  {% if description %}<meta name="twitter:description" content="{{ ogDescription if ogDescription else description }}" />{% endif %}
+  {% if site.ogImage %}<meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}" />{% endif %}
+
+  <!-- Icon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+
   <link rel="stylesheet" href="/css/main.css" />
   {% if turnstile %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
+
+  <!-- Site-wide structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "{{ site.url }}/#organization",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}/",
+        "logo": { "@type": "ImageObject", "url": "{{ site.url }}/favicon.svg" },
+        "description": "{{ site.description }}",
+        "email": "{{ site.email }}",
+        "telephone": "{{ site.phone_office }}",
+        "foundingDate": "{{ site.founded }}",
+        "priceRange": "$$",
+        "slogan": "More high-ticket jobs. Zero tyre kickers.",
+        "address": { "@type": "PostalAddress", "addressLocality": "{{ site.address.city }}", "addressRegion": "{{ site.address.state }}", "addressCountry": "{{ site.address.country }}" },
+        "geo": { "@type": "GeoCoordinates", "latitude": {{ site.lat }}, "longitude": {{ site.lng }} },
+        "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:00" },
+        "areaServed": [{% for a in site.areaServed %}{ "@type": "City", "name": "{{ a }}" }{% if not loop.last %}, {% endif %}{% endfor %}],
+        "knowsAbout": ["Google Ads for trades", "Meta advertising", "lead generation for home services", "landscaping marketing", "house washing marketing", "concreting marketing", "roofing marketing", "missed-call recovery", "local service ads"],
+        "sameAs": [{% for u in site.social %}"{{ u }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+        "contactPoint": { "@type": "ContactPoint", "telephone": "{{ site.phone_office }}", "email": "{{ site.email }}", "contactType": "sales", "areaServed": "AU", "availableLanguage": "English" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "url": "{{ site.url }}/",
+        "name": "{{ site.name }}",
+        "inLanguage": "en-AU",
+        "publisher": { "@id": "{{ site.url }}/#organization" }
+      }{% if page.url != "/" %},
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+          { "@type": "ListItem", "position": 2, "name": "{{ page.url | replace('/', '') | replace('-', ' ') | title }}", "item": "{{ site.url }}{{ page.url }}" }
+        ]
+      }{% endif %}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -42,7 +110,9 @@
   </div>
 </header>
 
+<main id="main">
 {{ content | safe }}
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">

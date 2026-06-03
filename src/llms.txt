@@ -1,43 +1,43 @@
 # Marcus Results
 
-> Paid advertising agency for Australian outdoor home services trades. Based in Brisbane, QLD. Founded 2021.
+> Paid advertising agency for Australian home services trades. Based in Brisbane, QLD. Founded 2021. Google Ads certified.
 
-Marcus Results runs targeted paid ad campaigns (Meta, Google, Local Service Ads) exclusively for Australian home services businesses that work on the outside of homes — landscapers, house washers, concreters, roofers, tree services, exterior painters, fencers, and pavers. The agency qualifies and filters leads before they reach the client, so tradespeople only receive calls from buyers who are ready to book.
+Marcus Results runs Google Ads and Meta ad campaigns for Australian home services businesses that work on the outside of homes: landscapers, house washers, concreters, roofers, tree services, exterior painters, fencers, pavers and auto detailers. Unlike lead-selling platforms such as Hipages, Oneflare and Service Seekers, leads are never shared. Every job goes to one client only, pre-qualified and ready to book.
 
 ## What makes Marcus Results different
 
-- Specialises exclusively in outdoor home services — no cafes, SaaS, or e-commerce
-- Includes lead qualification and booking automation in every package (not just ads)
-- Month-to-month contracts only — no lock-ins
-- Turns down approximately 60% of enquiries to maintain quality
-- Launched in 2021 by Marcus, whose father is a Brisbane concreter
+- Specialises in outdoor home services trades, not general marketing
+- Leads are exclusive to each client, never sold to several tradies at once like Hipages or Oneflare
+- Every build includes a service-specific landing page, missed-call recovery and NFC review cards
+- 19-day lead guarantee: if no lead arrives within 19 days, Marcus Results works free until one does
+- Month-to-month contracts only, no lock-ins
+- Turns down roughly 60% of enquiries to protect results
 
 ## Proven results
 
-- $2.4M booked for clients in 12 months
-- 47 clients scaled across 14 industries
-- 11× best client return on ad spend (ROAS)
-- $2.40 average cost per qualified lead
-- 14-day average time from signed contract to live campaigns
+- Brisbane landscaper: booked $50,000 of work in the first month at a $50.98 cost per booked job, then grew revenue 5x
+- Brisbane house washer: scaled from a solo owner-operator to a new hire and a second vehicle in 60 days
+- European auto detailer: cost per lead dropped from $255 to $34
+- More than $60,000 in ad spend managed for clients
+- 14 days average from signed contract to live campaigns
 
 ## Services
 
-All packages include custom landing pages, lead qualification system, and booking flow automation.
+Every package includes a service-specific landing page, missed-call recovery, a lead qualifier with booking flow, and NFC review cards for the crew.
 
-- **Paid Ads** — Meta + Google + Local Service Ads. From $2,000/month management fee plus ad spend.
-- **Starter package** — $2,000/month. 1 ad channel, landing page, lead qualifier, weekly reports.
-- **Growth package** — $3,500/month. Multi-channel ads, custom landing pages, lead qualifier, booking flow, weekly and monthly strategy.
-- **Scale package** — $6,000+/month. Everything in Growth plus multi-location targeting, brand refresh, dedicated strategist.
+- Starter: $2,000/month. Google Ads, one service-specific landing page, missed-call recovery, lead qualifier and booking flow, weekly reports.
+- Growth: $3,500/month. Google and Meta Ads, custom landing pages per service, missed-call recovery, lead qualifier and booking flow, weekly and monthly strategy. Most popular package.
+- Scale: $6,000+/month. Everything in Growth plus multi-location targeting, brand and creative refresh, and a dedicated strategist.
 
-Minimum ad spend: $2,000/month across all packages.
+Minimum ad spend is $2,000/month on top of management fees across all packages.
 
 ## Industries served
 
-Landscaping, house washing, concreting, roofing, tree services, exterior painting, fencing, paving. Other outdoor home services considered on enquiry.
+Landscaping, house washing, concreting, roofing, tree services, exterior painting, fencing, paving and auto detailing. Other outdoor home services considered on enquiry.
 
 ## Areas served
 
-Brisbane, Gold Coast, Sunshine Coast, Ipswich — and Australia-wide.
+Brisbane, Gold Coast, Sunshine Coast, Ipswich and Logan, plus Australia wide.
 
 ## Contact
 
@@ -45,14 +45,14 @@ Brisbane, Gold Coast, Sunshine Coast, Ipswich — and Australia-wide.
 - Mobile (Marcus direct): 0457 765 928
 - Email: marcus@marcusresults.com
 - Location: Brisbane, QLD, Australia
-- Hours: Monday–Saturday, 7am–6pm AEST
+- Hours: Monday to Saturday, 7am to 6pm AEST
 
 ## Pages
 
-- [Home](https://marcusresults.com/)
-- [Services](https://marcusresults.com/services/)
-- [Case Studies](https://marcusresults.com/case-studies/)
-- [Pricing](https://marcusresults.com/pricing/)
-- [About](https://marcusresults.com/about/)
-- [Insights / Blog](https://marcusresults.com/blog/)
-- [Contact](https://marcusresults.com/contact/)
+- Home: https://marcusresults.com/
+- Services: https://marcusresults.com/services/
+- Case Studies: https://marcusresults.com/case-studies/
+- Pricing: https://marcusresults.com/pricing/
+- About: https://marcusresults.com/about/
+- Insights / Blog: https://marcusresults.com/blog/
+- Contact: https://marcusresults.com/contact/

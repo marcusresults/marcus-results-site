@@ -1,7 +1,7 @@
 {
   "url": "https://marcusresults.com",
   "name": "Marcus Results",
-  "description": "Targeted paid ads for Aussie home services businesses. Landscapers, house washers, concreters and other outdoor trades.",
+  "description": "Targeted Google and Meta ads for Aussie home services trades. Landscapers, house washers, concreters and other outdoor trades. Pre-qualified jobs brought straight to you, never shared with other tradies.",
   "phone_office": "+61731139989",
   "phone_mobile": "+61457765928",
   "email": "marcus@marcusresults.com",
@@ -12,5 +12,8 @@
   },
   "founded": "2021",
   "lat": -27.4595,
-  "lng": 152.9714
+  "lng": 152.9714,
+  "areaServed": ["Brisbane", "Gold Coast", "Sunshine Coast", "Ipswich", "Logan"],
+  "ogImage": "",
+  "social": []
 }
