@@ -14,7 +14,7 @@
   "lat": -27.4595,
   "lng": 152.9714,
   "areaServed": ["Brisbane", "Gold Coast", "Sunshine Coast", "Ipswich", "Logan"],
-  "ogImage": "",
+  "ogImage": "/og-image.jpg",
   "social": [
     "https://au.linkedin.com/company/marcusresults",
     "https://www.instagram.com/marcusresults/",

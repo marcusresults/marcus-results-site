@@ -7,6 +7,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  eleventyConfig.addPassthroughCopy("src/og-image.jpg");
 
   // Exposed to templates as {{ buildDate }} — used for sitemap <lastmod>
   eleventyConfig.addGlobalData("buildDate", () => new Date().toISOString().slice(0, 10));
