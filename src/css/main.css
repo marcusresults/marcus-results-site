@@ -800,6 +800,15 @@ p { margin: 0; }
   gap: 48px;
 }
 
+/* Toolbox template cards */
+.kit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+.kit-card { border: 2px solid var(--ink); background: var(--white); padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: transform .2s, box-shadow .2s; }
+.kit-card:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--ink); }
+.kit-card .kit-tag { font-size: 11px; color: var(--orange); letter-spacing: 0.14em; }
+.kit-card h3 { font-family: 'Archivo Black', sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; }
+.kit-card p { font-size: 14px; line-height: 1.5; color: var(--muted); margin-bottom: 8px; }
+@media (max-width: 900px) { .kit-grid { grid-template-columns: 1fr; } }
+
 /* Change -> result cards (How It Works) */
 .change-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
 .change-card { border: 2px solid var(--ink); background: var(--white); padding: 24px; display: flex; flex-direction: column; }
