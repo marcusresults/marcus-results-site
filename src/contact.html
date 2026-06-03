@@ -44,7 +44,7 @@ turnstile: true
       <div class="form-wrap reveal reveal-delay-1">
         <span class="tape">FREE / NO LOCK-IN</span>
         <h2>Quick form.</h2>
-        <p class="sub">WE'LL CALL YOU WITHIN 24HRS.</p>
+        <p class="sub">WE'LL SEND YOU A VIDEO WITHIN 24HRS.</p>
 
         <form data-validate action="/api/submit" method="POST" data-redirect="/thanks" novalidate>
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true" />
@@ -67,30 +67,6 @@ turnstile: true
             <label for="email">Email</label>
             <input id="email" name="email" type="email" placeholder="dave@smithslawns.com.au" required />
             <div class="err">Real email please.</div>
-          </div>
-
-          <div class="field">
-            <label>Industry</label>
-            <div class="chip-row" data-chip-group>
-              <input type="hidden" name="industry" />
-              <button type="button" class="chip active" data-value="landscaping">LANDSCAPING</button>
-              <button type="button" class="chip" data-value="house-wash">HOUSE WASH</button>
-              <button type="button" class="chip" data-value="concreting">CONCRETING</button>
-              <button type="button" class="chip" data-value="roofing">ROOFING</button>
-              <button type="button" class="chip" data-value="tree">TREE</button>
-              <button type="button" class="chip" data-value="other">OTHER</button>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Monthly Marketing Budget</label>
-            <div class="chip-row" data-chip-group>
-              <input type="hidden" name="budget" />
-              <button type="button" class="chip" data-value="<2k">&lt;$2K</button>
-              <button type="button" class="chip active" data-value="2-5k">$2–5K</button>
-              <button type="button" class="chip" data-value="5-10k">$5–10K</button>
-              <button type="button" class="chip" data-value="10k+">$10K+</button>
-            </div>
           </div>
 
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAA_REPLACE_WITH_YOUR_SITE_KEY" data-theme="dark" data-size="flexible" style="margin-bottom:16px;"></div>
