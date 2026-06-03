@@ -15,5 +15,10 @@
   "lng": 152.9714,
   "areaServed": ["Brisbane", "Gold Coast", "Sunshine Coast", "Ipswich", "Logan"],
   "ogImage": "",
-  "social": []
+  "social": [
+    "https://au.linkedin.com/company/marcusresults",
+    "https://www.instagram.com/marcusresults/",
+    "https://www.facebook.com/marcusresults",
+    "https://www.tiktok.com/@marcusresults"
+  ]
 }

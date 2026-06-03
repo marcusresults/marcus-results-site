@@ -10,6 +10,9 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <meta name="author" content="{{ site.name }}" />
 
+  {% set ogImageUrl = "" %}
+  {% if site.ogImage %}{% set ogImageUrl = site.ogImage if "://" in site.ogImage else site.url + site.ogImage %}{% endif %}
+
   <!-- Local / geo signals -->
   <meta name="geo.region" content="AU-QLD" />
   <meta name="geo.placename" content="Brisbane, Queensland" />
@@ -23,13 +26,14 @@
   <meta property="og:type" content="{{ ogType if ogType else 'website' }}" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
   <meta property="og:locale" content="en_AU" />
-  {% if site.ogImage %}<meta property="og:image" content="{{ site.url }}{{ site.ogImage }}" />{% endif %}
+  {% if ogImageUrl %}<meta property="og:image" content="{{ ogImageUrl }}" />
+  <meta property="og:image:alt" content="{{ ogTitle if ogTitle else title }}" />{% endif %}
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="{% if site.ogImage %}summary_large_image{% else %}summary{% endif %}" />
+  <meta name="twitter:card" content="{% if ogImageUrl %}summary_large_image{% else %}summary{% endif %}" />
   <meta name="twitter:title" content="{{ ogTitle if ogTitle else title }}" />
   {% if description %}<meta name="twitter:description" content="{{ ogDescription if ogDescription else description }}" />{% endif %}
-  {% if site.ogImage %}<meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}" />{% endif %}
+  {% if ogImageUrl %}<meta name="twitter:image" content="{{ ogImageUrl }}" />{% endif %}
 
   <!-- Icon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
