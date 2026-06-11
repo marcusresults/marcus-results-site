@@ -77,7 +77,7 @@ export async function onRequestPost(context) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'New Lead <new-lead@notify.marcusresults.com>',
+        from: 'Marcus Results <new-lead@notify.marcusresults.com>',
         to: [toEmail],
         reply_to: data.email,
         subject: `New lead: ${data.name} — ${data.biz}`,
@@ -88,6 +88,7 @@ export async function onRequestPost(context) {
             <tr><td><b>Business</b></td><td>${esc(data.biz)}</td></tr>
             <tr><td><b>Phone</b></td><td><a href="tel:${esc(data.phone)}">${esc(data.phone)}</a></td></tr>
             <tr><td><b>Email</b></td><td><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
+            <tr><td valign="top"><b>Struggling with</b></td><td>${data.message && String(data.message).trim() ? esc(data.message).replace(/\n/g, '<br>') : '<span style="color:#999;">(not provided)</span>'}</td></tr>
             <tr><td><b>Submitted</b></td><td>${submittedAt}</td></tr>
             <tr><td><b>Referrer</b></td><td>${esc(referrer)}</td></tr>
             <tr><td><b>IP</b></td><td>${esc(ip)}</td></tr>
@@ -117,6 +118,7 @@ export async function onRequestPost(context) {
             business_name: data.biz,
             phone: data.phone,
             email: data.email,
+            message: data.message || '',
             source: 'marcusresults.com — Contact Form',
             submitted_at: submittedAt,
             ip,
