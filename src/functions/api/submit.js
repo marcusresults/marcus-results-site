@@ -54,43 +54,79 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Invalid email.' }, 400);
     }
 
-    // ---- Build GHL payload ----
-    // GHL inbound webhooks accept arbitrary JSON; map to their expected fields.
-    const [firstName, ...rest] = String(data.name).trim().split(' ');
-    const lastName = rest.join(' ');
+    const submittedAt = new Date().toISOString();
+    const ip = request.headers.get('CF-Connecting-IP') || '';
+    const referrer = request.headers.get('referer') || '';
 
-    const payload = {
-      first_name: firstName,
-      last_name: lastName || '',
-      full_name: data.name,
-      business_name: data.biz,
-      phone: data.phone,
-      email: data.email,
-      industry: data.industry || '',
-      monthly_budget: data.budget || '',
-      source: 'marcusresults.com.au — Contact Form',
-      submitted_at: new Date().toISOString(),
-      ip: request.headers.get('CF-Connecting-IP') || '',
-      user_agent: request.headers.get('user-agent') || '',
-      referrer: request.headers.get('referer') || '',
-    };
+    const esc = (s) =>
+      String(s).replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+      }[c]));
 
-    // ---- Forward to GHL ----
-    if (!env.GHL_WEBHOOK_URL) {
-      console.warn('GHL_WEBHOOK_URL not configured');
+    // ---- Lead notification email via Resend ----
+    if (!env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured');
       return json({ ok: false, error: 'Server misconfigured.' }, 500);
     }
 
-    const ghlRes = await fetch(env.GHL_WEBHOOK_URL, {
+    const toEmail = env.LEAD_TO_EMAIL || 'marcus@marcusresults.com';
+    const emailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(payload),
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'New Lead <new-lead@notify.marcusresults.com>',
+        to: [toEmail],
+        reply_to: data.email,
+        subject: `New lead: ${data.name} — ${data.biz}`,
+        html: `
+          <h2>New game plan request</h2>
+          <table cellpadding="6" style="font-family:sans-serif;font-size:14px;">
+            <tr><td><b>Name</b></td><td>${esc(data.name)}</td></tr>
+            <tr><td><b>Business</b></td><td>${esc(data.biz)}</td></tr>
+            <tr><td><b>Phone</b></td><td><a href="tel:${esc(data.phone)}">${esc(data.phone)}</a></td></tr>
+            <tr><td><b>Email</b></td><td><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
+            <tr><td><b>Submitted</b></td><td>${submittedAt}</td></tr>
+            <tr><td><b>Referrer</b></td><td>${esc(referrer)}</td></tr>
+            <tr><td><b>IP</b></td><td>${esc(ip)}</td></tr>
+          </table>
+          <p style="font-family:sans-serif;font-size:13px;color:#666;">Reply to this email to reach the lead directly. Video due within 24hrs.</p>
+        `,
+      }),
     });
 
-    if (!ghlRes.ok) {
-      const text = await ghlRes.text();
-      console.error('GHL webhook failed', ghlRes.status, text);
+    if (!emailRes.ok) {
+      const text = await emailRes.text();
+      console.error('Resend failed', emailRes.status, text);
       return json({ ok: false, error: 'Upstream error.' }, 502);
+    }
+
+    // ---- Optional: forward to GHL CRM (best effort, never blocks the lead) ----
+    if (env.GHL_WEBHOOK_URL) {
+      const [firstName, ...rest] = String(data.name).trim().split(' ');
+      try {
+        await fetch(env.GHL_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            first_name: firstName,
+            last_name: rest.join(' '),
+            full_name: data.name,
+            business_name: data.biz,
+            phone: data.phone,
+            email: data.email,
+            source: 'marcusresults.com — Contact Form',
+            submitted_at: submittedAt,
+            ip,
+            user_agent: request.headers.get('user-agent') || '',
+            referrer,
+          }),
+        });
+      } catch (err) {
+        console.error('GHL webhook failed', err);
+      }
     }
 
     return json({ ok: true });
