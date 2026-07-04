@@ -5,7 +5,7 @@
   "description": "Marcus Results marketing site — built with Eleventy, deployed to Cloudflare Pages",
   "scripts": {
     "dev": "eleventy --serve --port 3000",
-    "build": "eleventy"
+    "build": "eleventy && node scripts/minify-assets.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

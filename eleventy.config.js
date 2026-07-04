@@ -1,7 +1,4 @@
 import { minify as minifyHtml } from "html-minifier-terser";
-import { minify as minifyJs } from "terser";
-import CleanCSS from "clean-css";
-import fs from "node:fs";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
@@ -39,20 +36,6 @@ export default function (eleventyConfig) {
       });
     }
     return content;
-  });
-
-  // Minify CSS + JS in place after the build copies them
-  eleventyConfig.on("eleventy.after", async () => {
-    const cssPath = "_site/css/main.css";
-    if (fs.existsSync(cssPath)) {
-      const out = new CleanCSS({ level: 1 }).minify(fs.readFileSync(cssPath, "utf8"));
-      if (!out.errors.length) fs.writeFileSync(cssPath, out.styles);
-    }
-    const jsPath = "_site/js/main.js";
-    if (fs.existsSync(jsPath)) {
-      const out = await minifyJs(fs.readFileSync(jsPath, "utf8"), { compress: true, mangle: true });
-      if (out.code) fs.writeFileSync(jsPath, out.code);
-    }
   });
 
   return {
