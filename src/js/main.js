@@ -9,7 +9,10 @@
   document.querySelectorAll('.nav-toggle').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var nav = document.querySelector('.main-nav');
-      if (nav) nav.classList.toggle('open');
+      if (nav) {
+        nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+      }
     });
   });
 
@@ -18,6 +21,7 @@
     var q = item.querySelector('.faq-q');
     var a = item.querySelector('.faq-a');
     if (!q || !a) return;
+    q.setAttribute('aria-expanded', 'false');
     q.addEventListener('click', function () {
       var open = item.classList.contains('open');
       // close others in same group
@@ -28,15 +32,19 @@
             other.classList.remove('open');
             var oa = other.querySelector('.faq-a');
             if (oa) oa.style.maxHeight = '0px';
+            var oq = other.querySelector('.faq-q');
+            if (oq) oq.setAttribute('aria-expanded', 'false');
           }
         });
       }
       if (open) {
         item.classList.remove('open');
         a.style.maxHeight = '0px';
+        q.setAttribute('aria-expanded', 'false');
       } else {
         item.classList.add('open');
         a.style.maxHeight = a.scrollHeight + 'px';
+        q.setAttribute('aria-expanded', 'true');
       }
     });
   });

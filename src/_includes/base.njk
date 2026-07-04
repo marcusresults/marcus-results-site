@@ -40,11 +40,17 @@
 
   <!-- Icon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Fonts -->
+  <!-- Fonts: load async so text paints immediately with fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" /></noscript>
+
+  <!-- Analytics domains: resolve DNS early -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.clarity.ms" />
 
   <link rel="stylesheet" href="/css/main.css" />
   {% if turnstile %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
@@ -113,13 +119,15 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="nav-inner">
     <a class="logo" href="/">
       <span class="dot"></span>MARCUS<span class="slash">/</span>RESULTS
     </a>
-    <nav class="main-nav" aria-label="Main">
+    <nav class="main-nav" id="site-nav" aria-label="Main">
       <ul>
         <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
         <li><a href="/services" {% if "/services" in page.url %}class="active"{% endif %}>How It Works</a></li>
@@ -130,7 +138,7 @@
       </ul>
     </nav>
     <a href="/contact" class="btn dark sm header-cta">Free Game Plan →</a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -186,6 +194,6 @@
   <a href="/contact" class="btn sm">Get Mine →</a>
 </div>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>
