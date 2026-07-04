@@ -15,6 +15,10 @@ export default function (eleventyConfig) {
   // Exposed to templates as {{ buildDate }} — used for sitemap <lastmod>
   eleventyConfig.addGlobalData("buildDate", () => new Date().toISOString().slice(0, 10));
 
+  // Per-build stamp appended to CSS/JS URLs (?v=...) so each deploy gets a
+  // fresh CDN cache key — the zone edge caches assets for a year otherwise.
+  eleventyConfig.addGlobalData("buildStamp", () => Date.now().toString(36));
+
   // Build-time fallback for the "BOOKING <month>" pill (one month ahead of build).
   // Client-side JS in main.js corrects this to the visitor's actual next month.
   eleventyConfig.addGlobalData("bookingMonth", () => {

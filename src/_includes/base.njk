@@ -52,7 +52,7 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
 
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css?v={{ buildStamp }}" />
   {% if turnstile %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
 
   <!-- Site-wide structured data -->
@@ -194,6 +194,6 @@
   <a href="/contact" class="btn sm">Get Mine →</a>
 </div>
 
-<script src="/js/main.js" defer></script>
+<script src="/js/main.js?v={{ buildStamp }}" defer></script>
 </body>
 </html>
