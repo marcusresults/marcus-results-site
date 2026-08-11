@@ -69,7 +69,12 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Server misconfigured.' }, 500);
     }
 
-    const toEmail = env.LEAD_TO_EMAIL || 'marcus@marcusresults.com';
+    const toEmail = env.LEAD_TO_EMAIL || 'marcus@marcusresults.com.au';
+    // Sending domain, not a contact address: only notify.marcusresults.com is
+    // verified in Resend today. Verify notify.marcusresults.com.au there, then
+    // set LEAD_FROM_EMAIL to move it — no code change or redeploy needed.
+    const fromEmail =
+      env.LEAD_FROM_EMAIL || 'Marcus Results <new-lead@notify.marcusresults.com>';
     const emailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -77,7 +82,7 @@ export async function onRequestPost(context) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Marcus Results <new-lead@notify.marcusresults.com>',
+        from: fromEmail,
         to: [toEmail],
         reply_to: data.email,
         subject: `New lead: ${data.name} — ${data.biz}`,
@@ -119,7 +124,7 @@ export async function onRequestPost(context) {
             phone: data.phone,
             email: data.email,
             message: data.message || '',
-            source: 'marcusresults.com — Contact Form',
+            source: 'marcusresults.com.au — Contact Form',
             submitted_at: submittedAt,
             ip,
             user_agent: request.headers.get('user-agent') || '',

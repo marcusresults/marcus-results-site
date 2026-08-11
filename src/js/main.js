@@ -127,6 +127,23 @@
       });
       if (!valid) return;
 
+      var errBox = form.querySelector('.form-error');
+      if (errBox) { errBox.textContent = ''; errBox.style.display = 'none'; }
+
+      // If the captcha widget is on the page, make sure it has actually solved
+      // before we post — otherwise the server just bounces it back as a 400.
+      var captcha = form.querySelector('.cf-turnstile');
+      if (captcha) {
+        var tokenField = form.querySelector('[name="cf-turnstile-response"]');
+        if (!tokenField || !tokenField.value) {
+          if (errBox) {
+            errBox.textContent = 'Please tick the human-check box, then hit send.';
+            errBox.style.display = 'block';
+          }
+          return;
+        }
+      }
+
       var btn = form.querySelector('button[type="submit"]');
       var originalText = btn ? btn.textContent : '';
       if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
@@ -145,14 +162,13 @@
         throw new Error(data.error || 'Submit failed');
       } catch (err) {
         if (btn) { btn.textContent = originalText; btn.disabled = false; }
-        var errBox = form.querySelector('.form-error');
         if (errBox) {
-          errBox.textContent = 'Couldn\u2019t send \u2014 please call 0457 765 928 or email marcus@marcusresults.com';
+          errBox.textContent = 'Couldn\u2019t send \u2014 please call 0457 765 928 or email marcus@marcusresults.com.au';
           errBox.style.display = 'block';
         }
-        // reset turnstile if present
-        if (window.turnstile && form.dataset.turnstileWidget) {
-          try { window.turnstile.reset(form.dataset.turnstileWidget); } catch(_){}
+        // Captcha tokens are single use \u2014 reset so a retry isn't dead on arrival.
+        if (window.turnstile && captcha) {
+          try { window.turnstile.reset(captcha); } catch (_) {}
         }
         return;
       }

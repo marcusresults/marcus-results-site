@@ -1,10 +1,11 @@
 {
-  "url": "https://marcusresults.com",
+  "url": "https://marcusresults.com.au",
   "name": "Marcus Results",
   "description": "Targeted Google and Meta ads for Aussie home services trades. Landscapers, house washers, concreters and other outdoor trades. Pre-qualified jobs brought straight to you, never shared with other tradies.",
   "phone_office": "+61731139989",
   "phone_mobile": "+61457765928",
-  "email": "marcus@marcusresults.com",
+  "email": "marcus@marcusresults.com.au",
+  "turnstileSiteKey": "",
   "address": {
     "city": "Brisbane",
     "state": "QLD",

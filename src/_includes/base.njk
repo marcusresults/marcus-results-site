@@ -54,7 +54,7 @@
 
   <link rel="stylesheet" href="/css/main.css?v={{ buildStamp }}" />
   <noscript><style>.reveal, .reveal * { opacity: 1 !important; transform: none !important; }</style></noscript>
-  {% if turnstile %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
+  {% if turnstile and site.turnstileSiteKey %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
 
   <!-- Site-wide structured data -->
   <script type="application/ld+json">
@@ -173,7 +173,7 @@
     <div>
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:marcus@marcusresults.com">marcus@marcusresults.com</a></li>
+        <li><a href="mailto:marcus@marcusresults.com.au">marcus@marcusresults.com.au</a></li>
         <li><a href="tel:0731139989">07 3113 9989</a></li>
         <li><a href="tel:0457765928">0457 765 928</a></li>
         <li>Brisbane, QLD</li>

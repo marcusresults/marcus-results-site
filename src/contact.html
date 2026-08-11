@@ -30,7 +30,7 @@ turnstile: true
           </div>
           <div class="contact-info-row">
             <span class="mono" style="font-size:11px;color:var(--orange);">EMAIL</span>
-            <a href="mailto:marcus@marcusresults.com" class="display" style="font-size:clamp(15px,4.6vw,20px);">marcus@marcusresults.com</a>
+            <a href="mailto:marcus@marcusresults.com.au" class="display" style="font-size:clamp(15px,4.6vw,20px);">marcus@marcusresults.com.au</a>
             <span class="mono" style="font-size:11px;color:var(--muted);">Reply within hours</span>
           </div>
           <div class="contact-info-row">
@@ -73,7 +73,8 @@ turnstile: true
             <textarea id="message" name="message" rows="3" placeholder="e.g. Phone's gone quiet, or the leads I'm getting are tyre kickers."></textarea>
           </div>
 
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAA_REPLACE_WITH_YOUR_SITE_KEY" data-theme="dark" data-size="flexible" style="margin-bottom:16px;"></div>
+          {# Only rendered once a real site key is set in src/_data/site.json — an unset or placeholder key makes Turnstile paint a red "Error!" box on the form. #}
+          {% if site.turnstileSiteKey %}<div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="dark" data-size="flexible" style="margin-bottom:16px;"></div>{% endif %}
           <div class="form-error mono" style="display:none;font-size:11px;color:#ff8080;margin-bottom:12px;"></div>
 
           <button type="submit" class="btn lg" style="width:100%;justify-content:center;">Send It →</button>

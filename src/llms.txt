@@ -43,15 +43,15 @@ Brisbane, Gold Coast, Sunshine Coast, Ipswich and Logan, plus Australia wide.
 
 - Phone (office): 07 3113 9989
 - Mobile (Marcus direct): 0457 765 928
-- Email: marcus@marcusresults.com
+- Email: marcus@marcusresults.com.au
 - Location: Brisbane, QLD, Australia
 - Hours: Monday to Saturday, 7am to 6pm AEST
 
 ## Pages
 
-- Home: https://marcusresults.com/
-- How It Works (services and results): https://marcusresults.com/services/
-- Pricing: https://marcusresults.com/pricing/
-- About: https://marcusresults.com/about/
-- The Toolbox (free tools and templates): https://marcusresults.com/blog/
-- Contact: https://marcusresults.com/contact/
+- Home: https://marcusresults.com.au/
+- How It Works (services and results): https://marcusresults.com.au/services/
+- Pricing: https://marcusresults.com.au/pricing/
+- About: https://marcusresults.com.au/about/
+- The Toolbox (free tools and templates): https://marcusresults.com.au/blog/
+- Contact: https://marcusresults.com.au/contact/

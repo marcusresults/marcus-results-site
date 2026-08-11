@@ -67,7 +67,11 @@ Then **Retry deployment** so the function picks them up.
 ### 4. Set up Turnstile (spam protection on contact form)
 1. Cloudflare dash → **Turnstile → Add site**
 2. Add your `*.pages.dev` domain (and `marcusresults.com.au` when ready)
-3. Copy the **Site key** → paste into `src/contact.html` replacing `0x4AAAAAAA_REPLACE_WITH_YOUR_SITE_KEY`
+3. Copy the **Site key** → paste into `turnstileSiteKey` in `src/_data/site.json`
+
+   While that value is empty the widget is not rendered at all and the form still
+   works. It must hold a real key — a placeholder makes Turnstile paint a red
+   "Error!" box on the form (console error 400020).
 4. Copy the **Secret key** → add as `TURNSTILE_SECRET_KEY` env var (step 3)
 
 ### 5. Add your domain (when ready to go live)

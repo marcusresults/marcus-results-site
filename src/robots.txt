@@ -48,4 +48,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://marcusresults.com/sitemap.xml
+Sitemap: https://marcusresults.com.au/sitemap.xml
