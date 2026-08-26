@@ -93,6 +93,31 @@ git push
 Drop your favicon files into `src/` and uncomment the favicon links in `src/_includes/base.njk`.
 You have the source files at: `~/Downloads/Marcus results Favicons 512x512.png`
 
+## Spam filtering
+
+`functions/api/submit.js` scores every submission before it is emailed. The
+signals came from real junk this form received — the strongest by far is that
+the phone number cannot be dialled in Australia.
+
+| Verdict | Score | What happens |
+|---|---|---|
+| pass | 0–3 | Emailed normally, forwarded to GHL |
+| flag | 4–5 | Emailed with a `[LIKELY SPAM]` subject prefix and the reasons listed; **not** sent to GHL |
+| block | 6+ | Dropped. The bot is told `ok` so it stops retrying |
+
+Only the two honeypots (`website`, `company_url`) and a foreign `Origin` header
+block on their own. Everything else adds to the score, so no single mis-read can
+bin a real lead — and a mistyped Australian number is scored as a typo, not as a
+foreign number.
+
+Set `SPAM_ARCHIVE_EMAIL` in the Pages env to have blocked submissions delivered
+there instead of dropped, if you ever want to audit what the filter is catching.
+Blocked and flagged submissions are logged either way (Pages project → Functions
+→ Real-time logs), prefixed `spam `.
+
+To tune it, edit `BLOCK_AT` / `FLAG_AT` and the phrase lists at the top of
+`functions/api/submit.js`.
+
 ## GHL webhook field map
 
 ```json

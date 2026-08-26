@@ -113,6 +113,11 @@
 
   // ---------- Form validation + submit ----------
   document.querySelectorAll('form[data-validate]').forEach(function (form) {
+    // Stamp when the form became available. A submit that arrives milliseconds
+    // later was not typed by a person.
+    var stamp = form.querySelector('[name="ts"]');
+    if (stamp) stamp.value = String(Date.now());
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       var valid = true;

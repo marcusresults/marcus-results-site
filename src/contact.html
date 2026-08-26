@@ -47,7 +47,11 @@ turnstile: true
         <p class="sub">WE'LL SEND YOU A VIDEO WITHIN 24HRS.</p>
 
         <form data-validate action="/api/submit" method="POST" data-redirect="/thanks" novalidate>
+          {# Honeypots: invisible and unreachable by keyboard, so anything in them is a bot. #}
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true" />
+          <input type="text" name="company_url" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true" />
+          {# Stamped by main.js on load, so the server can spot a form "filled in" instantly. #}
+          <input type="hidden" name="ts" value="" />
           <div class="field">
             <label for="name">Your Name</label>
             <input id="name" name="name" type="text" placeholder="Dave Smith" required />
