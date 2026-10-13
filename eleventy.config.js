@@ -11,6 +11,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
   eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("src/og-image.jpg");
+  // Search Console ownership file. Must stay byte-for-byte as Google issued it.
+  eleventyConfig.addPassthroughCopy("src/google7a7ec5944efb0454.html");
 
   // Exposed to templates as {{ buildDate }} — used for sitemap <lastmod>
   eleventyConfig.addGlobalData("buildDate", () => new Date().toISOString().slice(0, 10));
