@@ -42,6 +42,23 @@ function isFillerPhone(raw) {
   return d.startsWith(block + block);
 }
 
+// The textbook fake Australian mobile, 0412 345 678, with the tail changed.
+// A bot ran +61 412 345 xxx through the form 15 times from Sep 2026.
+function isFakeAussieMobile(raw) {
+  let d = String(raw || '').replace(/\D/g, '');
+  if (d.startsWith('61')) d = '0' + d.slice(2);
+  return /^0?412345\d{3}$/.test(d) || /^0?400000\d{3}$/.test(d); // also our own 0400 000 000 placeholder
+}
+
+// Word-for-word messages from bots that keep coming back. Matched on the
+// start of the message, since the bot tacks the page title on the end.
+const BOT_TEMPLATES = [
+  /^i would like more information\. please contact me by email/i,
+];
+
+// US company suffixes. Australian trades are Pty Ltd or a sole trader.
+const FOREIGN_COMPANY_SUFFIX = /\b(llc|l\.l\.c\.|inc\.?|incorporated|corp\.?)$/i;
+
 // Phrases no genuine "I need more work" enquiry contains.
 const NEVER_A_REAL_LEAD = [
   'mailing list', 'newsletter', 'subscribe', 'subscription', 'weekly updates',
@@ -106,6 +123,7 @@ function scoreSubmission(data, request) {
     else add(4, 'phone is not a dialable Australian number');
   }
   if (isFillerPhone(phone)) add(3, 'phone matches a known filler pattern');
+  if (isFakeAussieMobile(phone)) add(4, 'phone is the fake 0412 345 xxx number');
 
   // ---- Identity ----
   if (name && biz && name.toLowerCase() === biz.toLowerCase()) {
@@ -114,6 +132,7 @@ function scoreSubmission(data, request) {
   if (name && !/\s/.test(name) && name.length >= 8) {
     add(2, 'name is one run-on token');
   }
+  if (FOREIGN_COMPANY_SUFFIX.test(biz)) add(2, 'US company suffix on the business name');
 
   // ---- Language ----
   if (NON_LATIN.test(blob)) add(3, 'non-Latin script');
@@ -126,6 +145,8 @@ function scoreSubmission(data, request) {
   const pitchy = COLD_PITCH.filter((p) => phraseHit(blob, p)).length;
   if (certain) add(Math.min(4, 2 + certain), certain + ' phrase(s) no real enquiry uses');
   if (pitchy) add(Math.min(3, pitchy + 1), pitchy + ' cold-pitch phrase(s)');
+
+  if (BOT_TEMPLATES.some((re) => re.test(message))) add(4, 'message is a known bot template');
 
   // A genuine lead never types the agency's own domain back at it.
   if (/marcusresults\.com/i.test(message)) add(3, 'quotes our own domain back at us');
